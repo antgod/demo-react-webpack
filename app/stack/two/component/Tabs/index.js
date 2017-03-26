@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 
 class Tabs extends Component {
   constructor(prop) {
-    super(prop);
+    super(prop)
 
-    const props = this.props;
+    const props = this.props
 
-    let activeIndex =  props.activeIndex || 0;
+    const activeIndex = props.activeIndex || 0
 
     this.state = {
       activeIndex,
@@ -19,8 +19,4 @@ class Tabs extends Component {
   }
 }
 
-
 export default Tabs
-
-
-

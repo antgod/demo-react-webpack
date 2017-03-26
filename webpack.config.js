@@ -33,6 +33,10 @@ module.exports = {
         exclude: path.resolve(__dirname, 'node_modules'),
       },
       {
+        test: /\.json$/,
+        loaders: ['json'],
+      },
+      {
         test: /\.md$/,
         loaders: ['html', 'markdown'],
       },

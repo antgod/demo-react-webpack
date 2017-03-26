@@ -23,7 +23,3 @@ DatePicker.RangePicker = class extends Component {
 const createRangePicker = () => <DatePicker.RangePicker value="2010-01-01~2017-01-01" />
 
 export default createRangePicker
-
-
-
-

@@ -1,12 +1,13 @@
 import React from 'react'
 import { HashRouter as Router, Route, Link } from 'react-router-dom'
+import ReactMarkdown from 'react-markdown'
 import { map } from '@common/utils'
 
 const createLinks = routers => map(routers, ({ path }, name, index) =>
   <li key={index}><Link to={path}>{name}</Link></li>
 )
 
-const componentWrapper = (Component) => () => {
+const componentWrapper = Component => () => {
   return (<div className="main">
     <Component />
   </div>)
@@ -19,21 +20,20 @@ const componentSubWrapper = (Component, filepath) => () => {
       <Component />
     </div>
     <div>
-      <div className="sub-main-title">代码:</div>
-      <div className="sub-main-code" dangerouslySetInnerHTML={{
-        /* eslint-disable */
-        __html: require(`../stack${filepath}`)
-      }} />
+      <div className="sub-main-title">说明以及源文件:</div>
+      <div style={{ background: '#fffeea' }}>
+        <ReactMarkdown source={require(`../stack${filepath}`)}/>
+      </div>
     </div>
   </div>)
 }
 
 const createRoutes = routers => map(routers, ({ Component, path }, name, index) => {
-  return <Route path={path} component={componentWrapper(Component)} key={index} />
+  return <Route path={path} component={componentWrapper(Component)} key={index}/>
 })
 
 const createSubRoutes = routers => map(routers, ({ Component, path, filepath }, name, index) => {
-  return <Route path={path} component={componentSubWrapper(Component, filepath)} key={index} />
+  return <Route path={path} component={componentSubWrapper(Component, filepath)} key={index}/>
 })
 
 export default Routers =>
@@ -47,12 +47,11 @@ export default Routers =>
     </div>
   </Router>
 
-
-export const generatorSubRouter = (Routers) => {
+export const generatorSubRouter = (Routers, title) => {
   return (<Router>
     <div>
       <ul className="navigator">
-        <li>二级菜单：</li>
+        <li>{title}</li>
         {createLinks(Routers)}
       </ul>
       <hr />

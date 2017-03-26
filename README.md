@@ -4,6 +4,12 @@
 1. 快速搭建react项目
 2. 完善的编译配置
 
+### 使用方法
+
+1. npm i
+2. npm start
+3. 浏览器输入localhost:8000
+
 ### 内容
 
 1. webpack
