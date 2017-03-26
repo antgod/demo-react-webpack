@@ -1,4 +1,35 @@
-.wrapper{
-  background: #efefef;
-  margin-bottom: 30px;
+body, ul, li{
+  margin: 0;
+  padding: 0;
+}
+
+.container{
+  .navigator{
+    display: flex;
+    margin: 10px 0;
+    list-style: none;
+    li {
+      padding-left: 20px;
+      a {
+        color: #108ee9;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .sub-main{
+    margin: 0 20px;
+    &-title{
+      line-height: 3;
+      font-size: 20px;
+      font-weight: 900;
+    }
+    &-view{
+
+    }
+
+    &-code{
+      background: #eee;
+    }
+  }
 }

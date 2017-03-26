@@ -1,41 +1,62 @@
-import Home from '../home'
-import ReverseMode from '../stack/ReverseMode'
-import CustomProps from '../stack/CustomProps'
-import HighLevelFunction from '../stack/HighLevelFunction'
-import Decorators from '../stack/Decorators'
-import HighLevelComponent from '../stack/HighLevelComponent'
-import HighLevelComponentWrapper from '../stack/HighLevelComponent/HighLevelComponentWrapper'
-import AbstractState from '../stack/HighLevelComponent/AbstractState'
-import CoreDecorators from '../stack/HighLevelComponent/CoreDecorators'
-import ReverseExtend from '../stack/HighLevelComponent/ReverseExtend'
-import ComponentProps from '../stack/ComponentProps'
-import LifeCycle from '../stack/LifeCycle'
-import MixEvent from '../stack/MixEvent'
-import ReactDOM from '../stack/ReactDOM'
-import Tabs from '../stack/component/Tabs'
-import ComposeEvent from '../stack/ComposeEvent'
-import ClassName from  '../stack/Style/ClassName'
-import CssModules from  '../stack/Style/CssModules'
+import React from 'react'
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
+import { map } from '@common/utils'
 
-const router = {
-  '/': Home,
-  '/reverse_mode': ReverseMode,
-  '/custom_props': CustomProps,
-  '/highlevel_function': HighLevelFunction,
-  '/decorators': Decorators,
-  '/highlevel_component': HighLevelComponent,
-  '/highLevel_component_wrapper': HighLevelComponentWrapper,
-  '/abstract_state': AbstractState,
-  '/component_props': ComponentProps,
-  '/core_decorators': CoreDecorators,
-  '/reverse_extend': ReverseExtend,
-  '/life_cycle': LifeCycle,
-  '/tabs': Tabs,
-  '/mix_event': MixEvent,
-  '/react_dom': ReactDOM,
-  '/compose_event': ComposeEvent,
-  '/classname': ClassName,
-  '/css_modules': CssModules,
-};
+const createLinks = routers => map(routers, ({ path }, name, index) =>
+  <li key={index}><Link to={path}>{name}</Link></li>
+)
 
-export default router
+const componentWrapper = (Component) => () => {
+  return (<div className="main">
+    <Component />
+  </div>)
+}
+
+const componentSubWrapper = (Component, filepath) => () => {
+  return (<div className="sub-main">
+    <div>
+      <div className="sub-main-title">效果:</div>
+      <Component />
+    </div>
+    <div>
+      <div className="sub-main-title">代码:</div>
+      <div className="sub-main-code" dangerouslySetInnerHTML={{
+        /* eslint-disable */
+        __html: require(`../stack${filepath}`)
+      }} />
+    </div>
+  </div>)
+}
+
+const createRoutes = routers => map(routers, ({ Component, path }, name, index) => {
+  return <Route path={path} component={componentWrapper(Component)} key={index} />
+})
+
+const createSubRoutes = routers => map(routers, ({ Component, path, filepath }, name, index) => {
+  return <Route path={path} component={componentSubWrapper(Component, filepath)} key={index} />
+})
+
+export default Routers =>
+  <Router>
+    <div className="container">
+      <ul className="navigator">
+        {createLinks(Routers)}
+      </ul>
+      <hr />
+      {createRoutes(Routers)}
+    </div>
+  </Router>
+
+
+export const generatorSubRouter = (Routers) => {
+  return (<Router>
+    <div>
+      <ul className="navigator">
+        <li>二级菜单：</li>
+        {createLinks(Routers)}
+      </ul>
+      <hr />
+      {createSubRoutes(Routers)}
+    </div>
+  </Router>)
+}
