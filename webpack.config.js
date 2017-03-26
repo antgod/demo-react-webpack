@@ -42,10 +42,12 @@ module.exports = {
       },
       {
         test: /\.css/,
+        // ?module开启css modules
         loader: ExtractTextPlugin.extract('style', 'css'),
       },
       {
         test: /\.less/,
+        // ?module开启css modules
         loader: ExtractTextPlugin.extract('style', 'css!less'),
       },
       {
