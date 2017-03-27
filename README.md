@@ -1,8 +1,8 @@
 ## React脚手架
 ### 目的
 
-1. 快速搭建react项目
-2. 完善的编译配置
+1. 快速入手、学习、深入react技术栈
+2. 包括react概述，事件系统，css模块化，组件通信，高阶组件，渲染劫持，性能优化，动画，测试，react源码，flux,redux,服务端渲染，可视化等内容
 
 ### 使用方法
 
@@ -10,27 +10,14 @@
 2. npm start
 3. 浏览器输入localhost:8000
 
-### 内容
+### 文档
 
-1. webpack
-2. webpack-dev-server
-3. react
-4. react-router
-5. eslint
-6. 其他功能请参考package与webpack.config.js
-
-### 代码样例
-
-1. App: 图片引用，less编译
-2. Render: 根据类型与组件类绘制组件
-3. Context: react context跨组件传输数据
-4. Control: 受控组件阻止默认行为
-5. Hoc: 高阶组件，组件包装
+文档均在doc目录下。每张一个markdown文件
 
 ### 更多功能
-    本项目目标快速搭建react项目，其他功能请参考。
+    本项目目标快速入手、学习、深入react技术栈，其他功能请参考。
 1. 快速搭建demo: create-react-app
-2. 学习react技术栈请参考：react-stack
+2. React脚手架：react-webpack
 3. react相关技术: react-env
 
 
