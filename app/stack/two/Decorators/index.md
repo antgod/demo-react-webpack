@@ -66,3 +66,27 @@ export default MyClass
 几个月后，再去看组件的实现时，会发现代码已经没法维护，它的逻辑已经复杂到难以理解。写 React 组件时，我们首先考虑的往往是单一的功能、简洁的设计和逻辑。当加入功能的时候，可以继续控制组件的输入和输出。如果说因为复杂性，我们不断加入新的状态，那么组件肯定会因此变得非常难以维护。
 
 针对这些困扰，React 社区提出了新的方式来取代 mixin，那就是高阶组件。
+
+# Decorators
+
+简而言之，decorators就是把装饰类当做参数传入装饰器函数内。
+当函数有返回值时候，返回值当做装饰后的函数代理装饰函数。
+当函数没有返回值时，参数当做装饰后的函数代理装饰函数。
+
+比如：
+
+```
+@decorators
+class Cls{
+
+}
+
+function decorators(Cls){
+  Cls.age = 10
+  Cls.prototype.age = 20
+  // return { age: 30 }
+}
+
+console.log(Cls.age)          // 打印10，打开注释后（return { age: 30}），输出30
+console.log(new Cls().age)    // 打印20，打开注释后（return { age: 30}），报错
+```
