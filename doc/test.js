@@ -19,10 +19,6 @@ const test = `<pre class="代码无行号 prettyprint"><code><span class="kwd">i
     </span><span class="kwd">this</span><span class="pun">.</span><span class="pln">refs</span><span class="pun">.</span><span class="pln">button</span><span class="pun">.</span><span class="pln">removeEventListener</span><span class="pun">(</span><span class="str">'click'</span><span class="pun">);</span><span class="pln">
   </span><span class="pun">}</span><span class="pln">
   
-  
-  
-  
-
   render</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
     </span><span class="kwd">return</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln">button </span><span class="kwd">ref</span><span class="pun">=</span><span class="str">"button"</span><span class="pun">&gt;</span><span class="typ">Test</span><span class="pun">&lt;/</span><span class="pln">button</span><span class="pun">&gt;;</span><span class="pln">
   </span><span class="pun">}</span><span class="pln">
@@ -31,9 +27,8 @@ const test = `<pre class="代码无行号 prettyprint"><code><span class="kwd">i
 
 
 const b = a.replace(/pre[\s\S]*\>[\s\S]*\<\/pre/, function(word){
-  console.log()
-  return word.replace(/\n{2, }/g, '\n')
-  replace(/\n+/g, '\n')
+  // console.log(word)
+  return word.replace(/(\n)+/g, '\n')
 })
 
  console.log(b)
