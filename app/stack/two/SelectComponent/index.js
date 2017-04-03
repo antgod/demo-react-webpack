@@ -119,7 +119,7 @@ const asyncSelectDecorator = params => (WrappedComponent) => {
     }
 
     onSearch(keyword) {
-      // 这里可以模拟发起ajax请求
+      // 模拟ajax请求
       const data = [1, 2, 3, 4].map(count => new Array(count).fill(keyword).join(''))
       this.setState({
         data,

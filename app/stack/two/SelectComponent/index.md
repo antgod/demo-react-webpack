@@ -18,14 +18,14 @@ function compose(...funcs) {
 
 class SelectInput extends Component {
   render() {
-    const { keyword, onChange, placeholder } = this.props
+    const { keyword, onChange, placeholder, context } = this.props
     return (
       <div className="select-input-wrapper">
         <Input
           className="select-input"
           type="text"
           value={keyword}
-          onChange={e => onChange(e.target.value)}
+          onChange={e => onChange.call(context, e.target.value)}
           placeholder={placeholder}
         />
       </div>
@@ -51,6 +51,9 @@ class List extends Component {
   }
 }
 
+// HOC合成第一种：使用decorator
+/* eslint-disable no-use-before-define*/
+@searchDecorator
 class Selector extends Component {
   render() {
     const { children } = this.props
@@ -65,12 +68,13 @@ class Selector extends Component {
 }
 
 // 完成 SearchInput 与 List 的交互
-const searchDecorator = (WrappedComponent) => {
+function searchDecorator(WrappedComponent) {
   class SearchDecorator extends Component {
     constructor(props) {
       super(props)
-      this.onChangeHandle = this.onChangeHandle.bind(this)
+      // 子组件调用父组件，第一种方式，直接在父组件内部修改this
       this.onClickHandle = this.onClickHandle.bind(this)
+      // this.onChangeHandle = this.onChangeHandle.bind(this)
       this.state = {}
     }
 
@@ -89,11 +93,13 @@ const searchDecorator = (WrappedComponent) => {
       })
     }
 
+    // 子组件调用父组件，第二种方式，把父组件this传给子组件，子组件调用bind或者call绑定context
     render() {
       return (
         <WrappedComponent
           {...this.props}
           {...this.state}
+          context={this}
           onChange={this.onChangeHandle}
           onClick={this.onClickHandle}
         />
@@ -103,6 +109,7 @@ const searchDecorator = (WrappedComponent) => {
   return SearchDecorator
 }
 
+// 可以手动传入参数
 // 完成 List 数据请求
 const asyncSelectDecorator = params => (WrappedComponent) => {
   class AsyncSelectDecorator extends Component {
@@ -113,7 +120,7 @@ const asyncSelectDecorator = params => (WrappedComponent) => {
     }
 
     onSearch(keyword) {
-      // 这里可以模拟发起ajax请求
+      // 模拟ajax请求
       const data = [1, 2, 3, 4].map(count => new Array(count).fill(keyword).join(''))
       this.setState({
         data,
@@ -134,9 +141,10 @@ const asyncSelectDecorator = params => (WrappedComponent) => {
   return AsyncSelectDecorator
 }
 
+// HOC合成第二种：手动调用包装函数。这里可以传入多个hoc函数
 const WrapperSelector = compose(asyncSelectDecorator({
   placeholder: '请输入',
-}), searchDecorator)(Selector)
+}))(Selector)
 
 class SearchSelect extends Component {
   render() {
