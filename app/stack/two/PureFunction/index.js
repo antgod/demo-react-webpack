@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 
+const Render = ({text}) => <div>{text}</div>
+
+
 class App extends Component {
   render() {
-    return <div>见说明</div>
+    return <Render text={'test'} />
   }
 }
 

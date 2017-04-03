@@ -1,3 +1,17 @@
+```
+import React, { Component } from 'react'
+
+const Render = ({text}) => <div>{text}</div>
+
+class App extends Component {
+  render() {
+    return <Render text={'test'} />
+  }
+}
+
+export default App
+```
+
 ### 给定相同的输入，它总是返回相同的输出
 
 但并不是所有方法都适应这个条件，有些方法的结果并不完全依赖于你所传入的参数。比如，

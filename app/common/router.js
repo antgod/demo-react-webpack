@@ -3,17 +3,13 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import { map } from '@common/utils'
 
+const BG_STYLE = { background: '#fffeea' }
+
 const createLinks = routers => map(routers, ({ path }, name, index) =>
   <li key={index}><Link to={path}>{name}</Link></li>
 )
 
-const componentWrapper = Component => () => {
-  return (<div className="main">
-    <Component />
-  </div>)
-}
-
-const componentSubWrapper = (Component, filepath) => () => {
+const SubComponentWrapper = ({ component: Component, filepath, style }) => {
   return (<div className="sub-main">
     <div>
       <div className="sub-main-title">效果:</div>
@@ -21,41 +17,57 @@ const componentSubWrapper = (Component, filepath) => () => {
     </div>
     <div>
       <div className="sub-main-title">说明以及源文件:</div>
-      <div style={{ background: '#fffeea' }}>
+      <div style={style}>
         <ReactMarkdown source={require(`../stack${filepath}`)}/>
       </div>
     </div>
   </div>)
 }
 
-const createRoutes = routers => map(routers, ({ Component, path }, name, index) => {
-  return <Route path={path} component={componentWrapper(Component)} key={index}/>
-})
+const SubRoute = ({ routes }) => {
+  return (<div>
+    {map(routes, ({ component, path, filepath }, name, index) => {
+      const props = {
+        component,
+        filepath,
+        style: BG_STYLE,
+      }
 
-const createSubRoutes = routers => map(routers, ({ Component, path, filepath }, name, index) => {
-  return <Route path={path} component={componentSubWrapper(Component, filepath)} key={index}/>
-})
+      return <Route path={path} component={() => <SubComponentWrapper {...props} />} key={index}/>
+    })}
+  </div>)
+}
 
-export default Routers =>
-  <Router>
-    <div className="container">
-      <ul className="navigator">
-        {createLinks(Routers)}
-      </ul>
-      <hr />
-      {createRoutes(Routers)}
-    </div>
-  </Router>
-
-export const generatorSubRouter = (Routers, title) => {
-  return (<Router>
+export const generatorSubRouter = (subRouters, title) => {
+  return (
     <div>
       <ul className="navigator">
         <li>{title}</li>
-        {createLinks(Routers)}
+        {createLinks(subRouters)}
       </ul>
       <hr />
-      {createSubRoutes(Routers)}
+      <SubRoute routes={subRouters}/>
     </div>
-  </Router>)
+  )
 }
+
+const RouteWithSubRoutes = route =>
+  <Route
+    path={route.path}
+    render={() => (
+      <route.component routes={route.children}/>
+    )}
+  />
+
+export default routers =>
+  <Router>
+    <div className="container">
+      <ul className="navigator">
+        {createLinks(routers)}
+      </ul>
+      {map(routers, (route, i) => (
+        <RouteWithSubRoutes key={i} {...route}/>
+      ))}
+    </div>
+  </Router>
+

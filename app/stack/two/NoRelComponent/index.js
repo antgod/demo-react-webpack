@@ -61,14 +61,19 @@ class List extends Component {
 }
 
 class App extends Component {
-  componentDidMount() {
-    this.itemChange = emitter.on('ItemChange', (data) => {
+  constructor() {
+    super()
+    this.itemChange = (data) => {
       console.log(data)
-    })
+    }
+  }
+
+  componentDidMount() {
+    emitter.on('ItemChange', this.itemChange)
   }
 
   componentWillUnmount() {
-    emitter.removeListener(this.itemChange)
+    emitter.removeListener('ItemChange', this.itemChange)
   }
 
   render() {

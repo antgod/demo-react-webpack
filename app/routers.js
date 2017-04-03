@@ -2,7 +2,7 @@ import Home from '@page/home'
 
 import One from '@stack/one'
 import Props from '@stack/one/Props'
-import ChildComponent from '@stack/one/ChildComponent'
+import Childcomponent from '@stack/one/Childcomponent'
 import InnerHTML from '@stack/one/InnerHTML'
 import LifeCycle from '@stack/one/LifeCycle'
 import ReactDOM from '@stack/one/ReactDOM'
@@ -13,143 +13,161 @@ import MixEvent from '@stack/two/MixEvent'
 import ClassName from '@stack/two/Style/ClassName'
 import CssModules from '@stack/two/Style/CssModules'
 import ChildrenToParent from '@stack/two/ChildrenToParent'
-import CrossComponent from '@stack/two/CrossComponent'
-import NoRelComponent from '@stack/two/NoRelComponent'
+import Crosscomponent from '@stack/two/Crosscomponent'
+import NoRelcomponent from '@stack/two/NoRelcomponent'
 import Decorators from '@stack/two/Decorators'
 import CoreDecorators from '@stack/two/CoreDecorators'
 import HocWrapper from '@stack/two/HocWrapper'
 import HocWrapperAdvance from '@stack/two/HocWrapperAdvance'
 import HocExtend from '@stack/two/HocExtend'
 import HocExtendAdvance from '@stack/two/HocExtendAdvance'
-import SelectComponent from '@stack/two/SelectComponent'
+import Selectcomponent from '@stack/two/Selectcomponent'
 import PureFunction from '@stack/two/PureFunction'
 import PureRender from '@stack/two/PureRender'
 import PureRenderMixin from '@stack/two/PureRenderMixin'
+import PureRenderOptimize from '@stack/two/PureRenderOptimize'
+import Keys from '@stack/two/Keys'
+import Perf from '@stack/two/Perf'
 
 const Routers = {
   home: {
     path: '/home',
-    Component: Home,
+    component: Home,
   },
   one: {
     path: '/one',
-    Component: One,
+    component: One,
     children: {
       子组件: {
         path: '/one/child_component',
         filepath: '/one/ChildComponent/index.md',
-        Component: ChildComponent,
+        component: Childcomponent,
       },
       组件属性: {
         path: '/one/props',
         filepath: '/one/Props/index.md',
-        Component: Props,
+        component: Props,
       },
       HTML转义: {
         path: '/one/inner_html',
         filepath: '/one/InnerHTML/index.md',
-        Component: InnerHTML,
+        component: InnerHTML,
       },
       生命周期: {
         path: '/one/lift_cycle',
         filepath: '/one/LifeCycle/index.md',
-        Component: LifeCycle,
+        component: LifeCycle,
       },
       DOM操作: {
         path: '/one/react_dom',
         filepath: '/one/ReactDOM/index.md',
-        Component: ReactDOM,
+        component: ReactDOM,
       },
     },
   },
   two: {
     path: '/two',
-    Component: Two,
+    component: Two,
     children: {
       事件绑定: {
         path: '/two/compose_event',
         filepath: '/two/ComposeEvent/index.md',
-        Component: ComposeEvent,
+        component: ComposeEvent,
       },
       混合事件: {
         path: '/two/mix_event',
         filepath: '/two/MixEvent/index.md',
-        Component: MixEvent,
+        component: MixEvent,
       },
       类处理: {
         path: '/two/style/classname',
         filepath: '/two/Style/classname.md',
-        Component: ClassName,
+        component: ClassName,
       },
       类模块: {
         path: '/two/style/css_modules',
         filepath: '/two/Style/css_modules.md',
-        Component: CssModules,
+        component: CssModules,
       },
       子父通信: {
         path: '/two/children_parent',
         filepath: '/two/ChildrenToParent/index.md',
-        Component: ChildrenToParent,
+        component: ChildrenToParent,
       },
       跨组件通信: {
         path: '/two/cross_component',
         filepath: '/two/CrossComponent/index.md',
-        Component: CrossComponent,
+        component: Crosscomponent,
       },
       无关联组件通信: {
-        path: '/two/norel_component',
+        path: '/two/no_rel_component',
         filepath: '/two/NoRelComponent/index.md',
-        Component: NoRelComponent,
+        component: NoRelcomponent,
       },
       ES7装饰器: {
         path: '/two/decorators',
         filepath: '/two/Decorators/index.md',
-        Component: Decorators,
+        component: Decorators,
       },
       NPM装饰器: {
         path: '/two/core_decorators',
         filepath: '/two/CoreDecorators/index.md',
-        Component: CoreDecorators,
+        component: CoreDecorators,
       },
       HOC属性代理: {
         path: '/two/hoc_wrapper',
         filepath: '/two/HocWrapper/index.md',
-        Component: HocWrapper,
+        component: HocWrapper,
       },
       HOC属性代理进阶: {
         path: '/two/hoc_wrapper_advance',
         filepath: '/two/HocWrapperAdvance/index.md',
-        Component: HocWrapperAdvance,
+        component: HocWrapperAdvance,
       },
       HOC反向继承: {
         path: '/two/hoc_extend',
         filepath: '/two/HocExtend/index.md',
-        Component: HocExtend,
+        component: HocExtend,
       },
       HOC反向继承进阶: {
         path: '/two/hoc_extend_advance',
         filepath: '/two/HocExtendAdvance/index.md',
-        Component: HocExtendAdvance,
+        component: HocExtendAdvance,
       },
       Select组件: {
-        path: '/two/SelectComponent',
+        path: '/two/select_component',
         filepath: '/two/SelectComponent/index.md',
-        Component: SelectComponent,
+        component: Selectcomponent,
       },
       纯函数: {
-        path: '/two/PureFunction',
+        path: '/two/pure_function',
         filepath: '/two/PureFunction/index.md',
-        Component: PureFunction,
+        component: PureFunction,
       },
       纯渲染_深对比: {
-        path: '/two/PureRender',
+        path: '/two/pure_render',
         filepath: '/two/PureRender/index.md',
-        Component: PureRender,
+        component: PureRender,
       },
       纯渲染插件_潜对比: {
-        path: '/two/PureRenderMixin',
+        path: '/two/pure_render_mixin',
         filepath: '/two/PureRenderMixin/index.md',
-        Component: PureRenderMixin,
+        component: PureRenderMixin,
+      },
+      纯渲染插件_优化: {
+        path: '/two/pure_render_optimize',
+        filepath: '/two/PureRenderOptimize/index.md',
+        component: PureRenderOptimize,
+      },
+      Keys: {
+        path: '/two/keys',
+        filepath: '/two/Keys/index.md',
+        component: Keys,
+      },
+      性能检测: {
+        path: '/two/perf',
+        filepath: '/two/Perf/index.md',
+        component: Perf,
       },
     },
   },
