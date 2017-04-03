@@ -22,7 +22,9 @@ import HocWrapperAdvance from '@stack/two/HocWrapperAdvance'
 import HocExtend from '@stack/two/HocExtend'
 import HocExtendAdvance from '@stack/two/HocExtendAdvance'
 import SelectComponent from '@stack/two/SelectComponent'
-
+import PureFunction from '@stack/two/PureFunction'
+import PureRender from '@stack/two/PureRender'
+import PureRenderMixin from '@stack/two/PureRenderMixin'
 
 const Routers = {
   home: {
@@ -133,6 +135,21 @@ const Routers = {
         path: '/two/SelectComponent',
         filepath: '/two/SelectComponent/index.md',
         Component: SelectComponent,
+      },
+      纯函数: {
+        path: '/two/PureFunction',
+        filepath: '/two/PureFunction/index.md',
+        Component: PureFunction,
+      },
+      纯渲染_深对比: {
+        path: '/two/PureRender',
+        filepath: '/two/PureRender/index.md',
+        Component: PureRender,
+      },
+      纯渲染插件_潜对比: {
+        path: '/two/PureRenderMixin',
+        filepath: '/two/PureRenderMixin/index.md',
+        Component: PureRenderMixin,
       },
     },
   },
