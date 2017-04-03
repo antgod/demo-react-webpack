@@ -21,6 +21,8 @@ import HocWrapper from '@stack/two/HocWrapper'
 import HocWrapperAdvance from '@stack/two/HocWrapperAdvance'
 import HocExtend from '@stack/two/HocExtend'
 import HocExtendAdvance from '@stack/two/HocExtendAdvance'
+import SelectComponent from '@stack/two/SelectComponent'
+
 
 const Routers = {
   home: {
@@ -126,6 +128,11 @@ const Routers = {
         path: '/two/hoc_extend_advance',
         filepath: '/two/HocExtendAdvance/index.md',
         Component: HocExtendAdvance,
+      },
+      Select组件: {
+        path: '/two/SelectComponent',
+        filepath: '/two/SelectComponent/index.md',
+        Component: SelectComponent,
       },
     },
   },
