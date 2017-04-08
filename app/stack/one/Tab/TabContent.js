@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes, Children, cloneElement } from 'react'
 import classnames from 'classnames'
 
 class TabContent extends Component {
@@ -11,17 +11,14 @@ class TabContent extends Component {
   getTabPanes() {
     const { classPrefix, activeIndex, panels } = this.props
 
-    return React.Children.map(panels, (child) => {
+
+    return panels.filter(child => child.props.order == activeIndex).map((child, index) => {
       if (!child) { return }
-
-      const order = parseInt(child.props.order, 10)
-      const isActive = activeIndex === order
-
-      return React.cloneElement(child, {
+      return cloneElement(child, {
         classPrefix,
-        isActive,
+        isActive: true,
         children: child.props.children,
-        key: `tabpane-${order}`,
+        key: `tabpane-${index}`,
       })
     })
   }

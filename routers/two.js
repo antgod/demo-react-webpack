@@ -19,6 +19,7 @@ import PureRenderMixin from '@stack/two/PureRenderMixin'
 import PureRenderOptimize from '@stack/two/PureRenderOptimize'
 import Keys from '@stack/two/Keys'
 import Perf from '@stack/two/Perf'
+import Tab from '@stack/two/Tab'
 
 export default {
   path: '/two',
@@ -123,6 +124,11 @@ export default {
       path: '/two/perf',
       filepath: '/two/Perf/index.md',
       component: Perf,
+    },
+    Tab优化: {
+      path: '/two/tab',
+      filepath: '/two/Tab/index.md',
+      component: Tab,
     },
   },
 }

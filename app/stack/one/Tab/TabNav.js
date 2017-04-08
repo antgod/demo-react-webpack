@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes, Children } from 'react'
 import classnames from 'classnames'
 
 class TabNav extends Component {
@@ -11,7 +11,7 @@ class TabNav extends Component {
   getTabs() {
     const { panels, classPrefix, activeIndex } = this.props
 
-    return React.Children.map(panels, (child) => {
+    return Children.map(panels, (child) => {
       if (!child) {
         return
       }

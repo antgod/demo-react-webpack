@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
 const publicPath = path.resolve(__dirname, 'public')
 
@@ -84,14 +85,15 @@ module.exports = {
       disable: false,
       allChunks: true,
     }),
+    new OpenBrowserPlugin({ url: 'http://localhost:8000' }),
     /*
-     // 压缩
-     new webpack.optimize.UglifyJsPlugin({
-     compressor: {
-     screw_ie8: true,
-     warnings: false,
-     },
-     }),
-     */
+    // 压缩
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        screw_ie8: true,
+        warnings: false,
+      },
+    }),
+    */
   ],
 }
