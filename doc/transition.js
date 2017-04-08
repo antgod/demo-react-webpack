@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const file = fs.readFileSync('2.漫谈React.md', 'utf8')
+const file = fs.readFileSync('3.react源码解析.md', 'utf8')
 
 /* eslint-disable */
 const reg = /pre[\s\S]*\>[\s\S]*\<\/pre/
