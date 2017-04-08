@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import classNames from 'classnames'
 import Style from './style.css'
 
-console.log(Style)
-
 class Button extends Component {
   render() {
     const btnClass = classNames({

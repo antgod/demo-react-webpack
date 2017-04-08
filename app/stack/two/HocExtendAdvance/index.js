@@ -47,9 +47,14 @@ class MyComponentDecoratorsClone extends Component {
 
 const wrapperContainerState = WrappedComponent =>
   class extends WrappedComponent {
+    constructor(props){
+      super(props)
+      this.state = this.props
+    }
     render() {
       return (<div>
-        <div className="title">控制属性:</div>
+        <div className="title">展示属性:</div>
+        <WrappedComponent {...this.props} />
         <p>Props</p>
         <pre>{JSON.stringify(this.props, null, 2)}</pre>
         <p>State</p>
@@ -60,6 +65,10 @@ const wrapperContainerState = WrappedComponent =>
 
 @wrapperContainerState
 class MyComponentDecoratorsState extends Component {
+  constructor(props){
+    super(props)
+    this.state = this.props
+  }
   render() {
     return <div>{this.props.text}</div>
   }
@@ -116,7 +125,7 @@ const createContainer = () => {
   return (<div>
     <WrapperDecorators text="WrapperDecorators" login={false}/>
     <MyComponentDecoratorsClone text="WrapperDecorators"/>
-    <MyComponentDecoratorsState a="a" b="b" c="c"/>
+    <MyComponentDecoratorsState text="DisplayStateAndProps"/>
     <MyComponentDecoratorsName />
     <MyComponentDecoratorsProps />
   </div>)

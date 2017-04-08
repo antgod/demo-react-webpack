@@ -7,8 +7,6 @@ import CSSModules from 'react-css-modules'
 import styles from './style.less'
 import { Seq } from 'immutable'
 
-console.log(styles)
-
 @immutableRenderDecorator
 @CSSModules(styles, { allowMultiple: true })
 class Tabs extends Component {
