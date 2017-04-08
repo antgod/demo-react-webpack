@@ -23,6 +23,7 @@ module.exports = {
       '@stack': path.join(process.cwd(), 'app', 'stack'),
       '@common': path.join(process.cwd(), 'app', 'common'),
       '@page': path.join(process.cwd(), 'app', 'page'),
+      '@routers': path.join(process.cwd(), 'routers'),
     },
   },
   module: {
