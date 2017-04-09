@@ -6,12 +6,6 @@ import CssModules from '@stack/two/Style/CssModules'
 import ChildrenToParent from '@stack/two/ChildrenToParent'
 import Crosscomponent from '@stack/two/Crosscomponent'
 import NoRelcomponent from '@stack/two/NoRelcomponent'
-import Decorators from '@stack/two/Decorators'
-import CoreDecorators from '@stack/two/CoreDecorators'
-import HocWrapper from '@stack/two/HocWrapper'
-import HocWrapperAdvance from '@stack/two/HocWrapperAdvance'
-import HocExtend from '@stack/two/HocExtend'
-import HocExtendAdvance from '@stack/two/HocExtendAdvance'
 import Selectcomponent from '@stack/two/Selectcomponent'
 import PureFunction from '@stack/two/PureFunction'
 import PureRender from '@stack/two/PureRender'
@@ -59,36 +53,6 @@ export default {
       path: '/two/no_rel_component',
       filepath: '/two/NoRelComponent/index.md',
       component: NoRelcomponent,
-    },
-    ES7装饰器: {
-      path: '/two/decorators',
-      filepath: '/two/Decorators/index.md',
-      component: Decorators,
-    },
-    NPM装饰器: {
-      path: '/two/core_decorators',
-      filepath: '/two/CoreDecorators/index.md',
-      component: CoreDecorators,
-    },
-    HOC属性代理: {
-      path: '/two/hoc_wrapper',
-      filepath: '/two/HocWrapper/index.md',
-      component: HocWrapper,
-    },
-    HOC属性代理进阶: {
-      path: '/two/hoc_wrapper_advance',
-      filepath: '/two/HocWrapperAdvance/index.md',
-      component: HocWrapperAdvance,
-    },
-    HOC反向继承: {
-      path: '/two/hoc_extend',
-      filepath: '/two/HocExtend/index.md',
-      component: HocExtend,
-    },
-    HOC反向继承进阶: {
-      path: '/two/hoc_extend_advance',
-      filepath: '/two/HocExtendAdvance/index.md',
-      component: HocExtendAdvance,
     },
     Select组件: {
       path: '/two/select_component',

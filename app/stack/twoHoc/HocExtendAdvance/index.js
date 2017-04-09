@@ -54,7 +54,7 @@ const wrapperContainerState = WrappedComponent =>
     render() {
       return (<div>
         <div className="title">展示属性:</div>
-        <WrappedComponent {...this.props} />
+        {super.render()}
         <p>Props</p>
         <pre>{JSON.stringify(this.props, null, 2)}</pre>
         <p>State</p>
