@@ -6,6 +6,10 @@ class ComposeEvent extends Component {
     console.log(this, rest)
   }
 
+  handleMousedown = (...rest) => {
+    console.log(this, rest)
+  }
+
   render() {
     /* 并不会把事件直接绑定到节点，而是同意绑定到结构的最外层，使用一个统一的时间监听器，
      这个事件监听器上维持了一个映射来保存所有组件内部的事件监听和处理函数 */
@@ -18,6 +22,7 @@ class ComposeEvent extends Component {
           <div
             className="item"
             onClick={::this.handerClick}
+            onMouseDown={this.handleMousedown}
             key={index}
           >
             {item}

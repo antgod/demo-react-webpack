@@ -53,3 +53,7 @@ export default ComposeEvent
 
     - 箭头函数。
 
+    - 双::
+
+    - 函数声明 handle = (e) => {}
+
